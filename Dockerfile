@@ -5,7 +5,6 @@ ARG steam_password=
 
 RUN apt update && apt install -y build-essential curl wine unzip
 
-RUN export DISPLAY=:0
 RUN wine cmd /c mkdir C:\\steamcmd
 
 # install steamcmd for windows
