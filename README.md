@@ -2,10 +2,10 @@
 
 ## Build
 ```
-$ docker build
+$ docker build --tag=astroneer
 ```
 
 ## Run
 ```
-$ docker run
+$ docker run astroneer:latest
 ```

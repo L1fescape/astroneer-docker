@@ -7,7 +7,8 @@ ASTRONEER_APP_ID=728470
 .PHONY: install
 install:
 	@mkdir -p ${ASTRONEER_DIR}
-	wine C:\\steamcmd\\steamcmd.exe
+	Xvfb :99 &
+	DISPLAY=:99 wine C:\\steamcmd\\steamcmd.exe
 		+login anonymous \
 		+force_install_dir ${ASTRONEER_DIR} \
 		+app_update ${ASTRONERR_APP_ID} validate \
