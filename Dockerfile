@@ -2,10 +2,10 @@ FROM debian:jessie
 
 ARG steam_user=anonymous
 ARG steam_password=
-ARG DISPLAY=:0
 
 RUN apt update && apt install -y build-essential curl wine unzip
 
+RUN export DISPLAY=:0
 RUN wine cmd /c mkdir C:\\steamcmd
 
 # install steamcmd for windows
