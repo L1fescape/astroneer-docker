@@ -2,7 +2,7 @@
 
 ## Build
 ```
-$ docker build --tag=astroneer
+$ docker build --tag=astroneer .
 ```
 
 ## Run

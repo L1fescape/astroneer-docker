@@ -1,20 +1,15 @@
-FROM debian:jessie
+FROM monokrome/wine
 
 ARG steam_user=anonymous
 ARG steam_password=
 
-RUN dpkg --add-architecture i386
-RUN apt-get update && apt-get install -y \
-  build-essential \
-  curl \
-  unzip \
-  wine \
-  xvfb
+RUN apk update
+RUN apk add make curl wine unzip
 
-# start and detach
-RUN Xvfb :99 &
+RUN ln -s /usr/bin/wine64 /usr/bin/wine
+RUN chmod +x /usr/local/bin/xvfb-run
 
-RUN DISPLAY=:99 wine cmd /c mkdir C:\\steamcmd
+RUN xvfb-run -a wine cmd /c mkdir C:\\steamcmd
 
 # install steamcmd for windows
 # https://developer.valvesoftware.com/wiki/SteamCMD#Manually
@@ -27,4 +22,4 @@ RUN mkdir -p $HOME/.wine/drive_c/steamcmd && \
 COPY ./Makefile $WORKDIR
 # RUN make install
 # CMD make start
-CMD make install
+CMD sleep 100000
